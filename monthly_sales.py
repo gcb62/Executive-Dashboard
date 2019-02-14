@@ -7,6 +7,20 @@ import pandas as pd
 import matplotlib.pyplot as pyp
 import matplotlib.ticker as tic
 
+import csv
+
+CSV_FILENAME = "sales-201803.csv"
+
+csv_filepath = os.path.join("data" , CSV_FILENAME)
+
+def month_lookup(month):
+	year_month={'01':'January','02':'February','03':'March','04':'April',
+	'05':'May','06':'June','07':'July','08':'August','09':'September','10':'October',
+	'11':'November', '12':'December'}
+	return year_month[month]
+
+
+# thanks to @hiepnguyen034 for help with the dictionary structure, lines 6-10 --> lines 16-20
 
 
 # now using #matplotlib
