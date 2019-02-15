@@ -47,7 +47,19 @@ def main():
 	print(" -------------------------------- ")
 	print("                                  ")
 
+	csv_file_name = input("Please enter the file's name (without the '.csv' extension) in the format " + " sales-YYYYMM: ")
+	csv_file_extension = csv_file_name + ".csv"
+	file_title = os.path.join("CSV Data/" , csv_file_extension)
 
+	# matching the inputs with the data
+
+	file_results = 0
+
+	if (os.path.isfile(file_title)):
+		file_results = pd.read_csv(file_title)
+	else:
+		print('invalid file')
+		return
 
 print("-----------------------")
 print("MONTH: March 2018")
