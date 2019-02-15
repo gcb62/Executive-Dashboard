@@ -1,14 +1,6 @@
 # monthly_sales.py
 
 
-
-import os
-import pandas as pd
-import matplotlib.pyplot as pyp
-import matplotlib.ticker as tic
-
-import csv
-
 CSV_FILENAME = "sales-201803.csv"
 
 csv_filepath = os.path.join("data" , CSV_FILENAME)
@@ -25,10 +17,35 @@ def month_lookup(month):
 
 # now using #matplotlib
 
-# import plotly
-# import plotly.graph_objs as go
+#inputs
 
-# ...adapted from in class importing of #pandas and #plotly functions
+
+def to_usd(sales):
+    return "${0:,.2f}".format(sales)
+
+def to_usd(total_sales):
+    return "${0:,.2f}".format(total_sales)
+
+def month_lookup(month):
+	selected_month ={'01':'January','02':'February','03':'March','04':'April',
+	'05':'May','06':'June','07':'July','08':'August','09':'September','10':'October',
+	'11':'November', '12':'December'}
+	return selected_month[month]
+
+
+def main():
+	print(" -------------------------------- ")
+	print("                                  ")
+	print("Welcome to the executive dashboard ")
+	print("                                  ")
+	print(" -------------------------------- ")
+	print("                                  ")
+	print(" -------------------------------- ")
+	print("                                  ")
+	print("Insert your data file below")
+	print("                                  ")
+	print(" -------------------------------- ")
+	print("                                  ")
 
 
 
