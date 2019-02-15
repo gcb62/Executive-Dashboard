@@ -61,6 +61,23 @@ def main():
 		print('invalid file')
 		return
 
+
+	csv_file_name = csv_file_name.replace("sales-", "")
+	year = csv_file_name[0:4]
+	month = csv_file_name[4:6]
+	month = month_lookup(month)
+		
+
+
+	sales = file_results.groupby(file_results["product"]).sum()
+	sales = sales.sort_values(by=["sales price"], ascending=False)
+	# print(sales.columns)
+	# print(file_results)
+	# print(sales)
+	total_sales = sales[['sales price']].sum()[0]
+	# print(total_sales)
+
+	
 print("-----------------------")
 print("MONTH: March 2018")
 
