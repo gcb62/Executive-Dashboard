@@ -77,22 +77,23 @@ def main():
 	total_sales = sales[['sales price']].sum()[0]
 	# print(total_sales)
 
-	
-print("-----------------------")
-print("MONTH: March 2018")
+	print("-----------------------")
+	print("MONTH and YEAR: {} {}".format(month,year))
 
-print("-----------------------")
-print("CRUNCHING THE DATA...")
+	print("-----------------------")
+	print("CRUNCHING THE DATA...")
 
-print("-----------------------")
-print("TOTAL MONTHLY SALES: $12,000.71")
+	print("-----------------------")
 
-print("-----------------------")
-print("TOP SELLING PRODUCTS:")
-print("  1) Button-Down Shirt: $6,960.35")
-print("  2) Super Soft Hoodie: $1,875.00")
-print("  3) etc.")
+	print("TOTAL MONTHLY SALES: " + str(total_sales))
 
-print("-----------------------")
-print("VISUALIZING THE DATA...")
+	count = 0
 
+	print("-----------------------")
+	print("TOP SELLING PRODUCTS:")
+	for idx, i in sales.iterrows():
+		count = count + 1
+		print(count, idx, to_usd(i['sales price']))
+
+	print("-----------------------")
+	print("VISUALIZING THE DATA...")
