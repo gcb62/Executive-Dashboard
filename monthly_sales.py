@@ -93,6 +93,8 @@ def main():
 		print(count, idx, to_usd(i['sales price']))
 # $ conversion so the output of sales is more human-friendly
 
+# big shoutout to TA @robchurchill for helping institute this function
+
 	# plot the graph
 	fig, ax = plt.subplots()
 	# format the graph
