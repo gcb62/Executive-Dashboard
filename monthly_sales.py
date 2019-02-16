@@ -102,6 +102,14 @@ def main():
 	ax.set_xlabel("USD")
 	ax.set_ylabel("Products")
 	# format it into $
-	
-	if __name__ == "__main__":
+	fmt = '${x:,.2f}'
+	tic = tick.StrMethodFormatter(fmt)
+	ax.xaxis.set_major_formatter(tic)
+	ax.set_title('Total Sales')
+	for idx, val in sales.iterrows():
+		ax.text(val['sales price'], idx, to_usd(val['sales price']))
+	plt.show()
+
+
+if __name__ == "__main__":
 	main()
