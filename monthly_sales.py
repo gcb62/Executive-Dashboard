@@ -1,21 +1,13 @@
 # monthly_sales.py
 
 
-CSV_FILENAME = "sales-201803.csv"
 
-csv_filepath = os.path.join("data" , CSV_FILENAME)
-
-def month_lookup(month):
-	year_month={'01':'January','02':'February','03':'March','04':'April',
-	'05':'May','06':'June','07':'July','08':'August','09':'September','10':'October',
-	'11':'November', '12':'December'}
-	return year_month[month]
-
-
-# thanks to @hiepnguyen034 for help with the dictionary structure, lines 6-10 --> lines 16-20
-
-
-# now using #matplotlib
+import os
+import pandas as pd
+import matplotlib.pyplot as plt
+import matplotlib.ticker as tick
+import operator
+import csv
 
 #inputs
 
@@ -23,8 +15,8 @@ def month_lookup(month):
 def to_usd(sales):
     return "${0:,.2f}".format(sales)
 
-def to_usd(total_sales):
-    return "${0:,.2f}".format(total_sales)
+# def to_usd(total_sales):
+#     return "${0:,.2f}".format(total_sales)
 
 def month_lookup(month):
 	selected_month ={'01':'January','02':'February','03':'March','04':'April',
@@ -32,6 +24,7 @@ def month_lookup(month):
 	'11':'November', '12':'December'}
 	return selected_month[month]
 
+# thanks to @hiepnguyen034 for help with the dictionary structure, lines 6-10 --> lines 21-25
 
 def main():
 	print(" -------------------------------- ")
@@ -47,6 +40,9 @@ def main():
 	print(" -------------------------------- ")
 	print("                                  ")
 
+
+
+
 	csv_file_name = input("Please enter the file's name (without the '.csv' extension) in the format " + " sales-YYYYMM: ")
 	csv_file_extension = csv_file_name + ".csv"
 	file_title = os.path.join("CSV Data/" , csv_file_extension)
@@ -61,13 +57,14 @@ def main():
 		print('invalid file')
 		return
 
+	# defining variables, matching the month and the years from the csv files
 
 	csv_file_name = csv_file_name.replace("sales-", "")
 	year = csv_file_name[0:4]
 	month = csv_file_name[4:6]
 	month = month_lookup(month)
 		
-
+	#defining sales variables, formula borrow from @hiepnguyen034
 
 	sales = file_results.groupby(file_results["product"]).sum()
 	sales = sales.sort_values(by=["sales price"], ascending=False)
@@ -85,7 +82,7 @@ def main():
 
 	print("-----------------------")
 
-	print("TOTAL MONTHLY SALES: " + str(total_sales))
+	print("TOTAL MONTHLY SALES: " + to_usd(total_sales))
 
 	count = 0
 
@@ -94,6 +91,8 @@ def main():
 	for idx, i in sales.iterrows():
 		count = count + 1
 		print(count, idx, to_usd(i['sales price']))
+# $ conversion so the output of sales is more human-friendly
 
-	print("-----------------------")
-	print("VISUALIZING THE DATA...")
+	# plot the graph
+	fig, ax = plt.subplots()
+	# format the graph
