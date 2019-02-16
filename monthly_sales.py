@@ -96,3 +96,12 @@ def main():
 	# plot the graph
 	fig, ax = plt.subplots()
 	# format the graph
+	fig.set_figheight(5)
+	fig.set_figwidth(25)
+	ax.barh(sales.index, sales['sales price'])
+	ax.set_xlabel("USD")
+	ax.set_ylabel("Products")
+	# format it into $
+	
+	if __name__ == "__main__":
+	main()
