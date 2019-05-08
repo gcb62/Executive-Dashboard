@@ -1,9 +1,7 @@
-# shopping_cart_test.py
+# exec-dash-test.py
 
-from shopping_cart import to_usd
-from shopping_cart import now
-
-
+from monthly_sales import to_usd
+from monthly_sales import month_lookup
 
 def test_usd():
     result1 = to_usd(3.5111111)
@@ -11,8 +9,10 @@ def test_usd():
     assert result1 == "$3.51"
     assert result2 == "$10.00"
 
-def human_friendly_time():
-    time1 = now(18.52)
-    time2 = now(6.43)
-    assert time1 == "18:52"
-    assert time2 == "6:43"
+def test_month_lookup():
+    month1 = month_lookup('01')
+    month2 = month_lookup('12')
+    month3 = month_lookup('06')
+    assert month1 == "January"
+    assert month2 == "December"
+    assert month3 == "June"
